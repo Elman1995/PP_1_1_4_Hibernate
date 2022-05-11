@@ -1,22 +1,15 @@
 package jm.task.core.jdbc.util;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Util {
-    private Connection connection;
 
-    public Util() throws SQLException, ClassNotFoundException {
-        String  userName = "root",
-                password = "Sesh2001",
-                connectionURL = "jdbc:mysql://localhost:3306/kata";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        try {
-            Connection connectionP = DriverManager.getConnection(connectionURL, userName, password);
-            this.connection = connectionP;
-        } catch (SQLException e) {}
-    }
-
-    public Connection getConnection() {
-        return this.connection;
+    public ArrayList<String> getMySqlOptions() {
+        ArrayList<String> result = new ArrayList<String>();
+        result.add("root");
+        result.add("Sesh2001");
+        result.add("jdbc:mysql://localhost:3306/kata");
+        return result;
     }
 }
