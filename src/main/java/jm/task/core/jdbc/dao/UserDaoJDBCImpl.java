@@ -8,14 +8,10 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-    private Util util = new Util();
-
     public void createUsersTable() {
         Connection connection = null;
-        ArrayList<String> options = util.getMySqlOptions();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(options.get(2), options.get(0), options.get(1));
+            connection = Util.getMySQLConnection();
             if (connection != null) {
                 connection.setAutoCommit(false);
                 Statement statement = connection.createStatement();
@@ -26,6 +22,8 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException | ClassNotFoundException  e) {
         } finally {
             try {
+                connection.rollback();
+                connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException e) {
             }
@@ -34,10 +32,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         Connection connection = null;
-        ArrayList<String> options = util.getMySqlOptions();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(options.get(2), options.get(0), options.get(1));
+            connection = Util.getMySQLConnection();
             if (connection != null) {
                 connection.setAutoCommit(false);
                 Statement statement = connection.createStatement();
@@ -48,6 +44,8 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException | ClassNotFoundException  e) {
         } finally {
             try {
+                connection.rollback();
+                connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException e) {
             }
@@ -56,10 +54,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void saveUser(String name, String lastName, byte age) {
         Connection connection = null;
-        ArrayList<String> options = util.getMySqlOptions();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(options.get(2), options.get(0), options.get(1));
+            connection = Util.getMySQLConnection();
             if (connection != null) {
                 connection.setAutoCommit(false);
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user (name, lastName, age) Values (?, ?, ?)");
@@ -73,6 +69,8 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException | ClassNotFoundException  e) {
         } finally {
             try {
+                connection.rollback();
+                connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException e) {
             }
@@ -81,10 +79,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void removeUserById(long id) {
         Connection connection = null;
-        ArrayList<String> options = util.getMySqlOptions();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(options.get(2), options.get(0), options.get(1));
+            connection = Util.getMySQLConnection();
             if (connection != null) {
                 connection.setAutoCommit(false);
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user WHERE id = ?");
@@ -96,6 +92,8 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException | ClassNotFoundException  e) {
         } finally {
             try {
+                connection.rollback();
+                connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException e) {
             }
@@ -105,10 +103,8 @@ public class UserDaoJDBCImpl implements UserDao {
     public List<User> getAllUsers() {
         List<User> people = new ArrayList<User>();
         Connection connection = null;
-        ArrayList<String> options = util.getMySqlOptions();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(options.get(2), options.get(0), options.get(1));
+            connection = Util.getMySQLConnection();
             if (connection != null) {
                 connection.setAutoCommit(false);
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user");
@@ -122,6 +118,8 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException | ClassNotFoundException  e) {
         } finally {
             try {
+                connection.rollback();
+                connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException e) {
             }
@@ -131,10 +129,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         Connection connection = null;
-        ArrayList<String> options = util.getMySqlOptions();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(options.get(2), options.get(0), options.get(1));
+            connection = Util.getMySQLConnection();
             if (connection != null) {
                 connection.setAutoCommit(false);
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user");
@@ -145,6 +141,8 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException | ClassNotFoundException  e) {
         } finally {
             try {
+                connection.rollback();
+                connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException e) {
             }

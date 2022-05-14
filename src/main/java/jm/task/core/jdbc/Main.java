@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) {
 
         UserServiceImpl userDaoJDBC = new UserServiceImpl();
         userDaoJDBC.createUsersTable();
