@@ -20,13 +20,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
-        } finally {
             try {
                 connection.rollback();
-                connection.setAutoCommit(true);
+            } catch (SQLException ex) {}
+        } finally {
+            try {
                 connection.close();
-            } catch (SQLException e) {
-            }
+            } catch (SQLException e) {}
         }
     }
 
@@ -42,13 +42,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
-        } finally {
             try {
                 connection.rollback();
-                connection.setAutoCommit(true);
+            } catch (SQLException ex) {}
+        } finally {
+            try {
                 connection.close();
-            } catch (SQLException e) {
-            }
+            } catch (SQLException e) {}
         }
     }
 
@@ -67,13 +67,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
-        } finally {
             try {
                 connection.rollback();
-                connection.setAutoCommit(true);
+            } catch (SQLException ex) {}
+        } finally {
+            try {
                 connection.close();
-            } catch (SQLException e) {
-            }
+            } catch (SQLException e) {}
         }
     }
 
@@ -90,13 +90,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
-        } finally {
             try {
                 connection.rollback();
-                connection.setAutoCommit(true);
+            } catch (SQLException ex) {}
+        } finally {
+            try {
                 connection.close();
-            } catch (SQLException e) {
-            }
+            } catch (SQLException e) {}
         }
     }
 
@@ -116,13 +116,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
-        } finally {
             try {
                 connection.rollback();
-                connection.setAutoCommit(true);
+            } catch (SQLException ex) {}
+        } finally {
+            try {
                 connection.close();
-            } catch (SQLException e) {
-            }
+            } catch (SQLException e) {}
         }
         return people;
     }
@@ -139,13 +139,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
-        } finally {
             try {
                 connection.rollback();
-                connection.setAutoCommit(true);
+            } catch (SQLException ex) {}
+        } finally {
+            try {
                 connection.close();
-            } catch (SQLException e) {
-            }
+            } catch (SQLException e) {}
         }
     }
 

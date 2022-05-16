@@ -10,7 +10,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
         UserServiceImpl userDaoJDBC = new UserServiceImpl();
         userDaoJDBC.createUsersTable();
         userDaoJDBC.saveUser("Elman", "Selimov", (byte) 20);
@@ -27,6 +26,6 @@ public class Main {
         }
         userDaoJDBC.cleanUsersTable();
         userDaoJDBC.dropUsersTable();
-
     }
+
 }
