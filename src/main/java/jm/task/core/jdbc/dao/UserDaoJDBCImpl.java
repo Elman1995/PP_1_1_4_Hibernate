@@ -17,7 +17,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 Statement statement = connection.createStatement();
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS User (id MEDIUMINT NOT NULL AUTO_INCREMENT, name varchar(30) NOT NULL , lastName varchar(30) NOT NULL , age TINYINT NOT NULL, PRIMARY KEY (id))");
                 connection.commit();
-                connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
             try {
@@ -39,7 +38,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 Statement statement = connection.createStatement();
                 statement.executeUpdate("DROP TABLE user");
                 connection.commit();
-                connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
             try {
@@ -64,7 +62,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 preparedStatement.setByte(3, (byte) age);
                 preparedStatement.executeUpdate();
                 connection.commit();
-                connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
             try {
@@ -87,7 +84,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 preparedStatement.setString(1, String.valueOf(id));
                 preparedStatement.executeUpdate();
                 connection.commit();
-                connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
             try {
@@ -113,7 +109,6 @@ public class UserDaoJDBCImpl implements UserDao {
                     people.add(new User(resultSet.getString("name"), resultSet.getString("lastName"), resultSet.getByte("age")));
                 }
                 connection.commit();
-                connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
             try {
@@ -136,7 +131,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user");
                 preparedStatement.executeUpdate();
                 connection.commit();
-                connection.setAutoCommit(true);
             }
         } catch (SQLException | ClassNotFoundException  e) {
             try {
